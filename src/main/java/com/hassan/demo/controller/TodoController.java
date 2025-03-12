@@ -32,10 +32,6 @@ public class TodoController {
         return "redirect:/";
     }
 
-    // @PostMapping("/delete/{index}")
-    // public String deleteTask(@PathVariable int index) {
-    // taskService.removeTask(index);
-    // return "redirect:/";
-    // }
+   
 
 }
