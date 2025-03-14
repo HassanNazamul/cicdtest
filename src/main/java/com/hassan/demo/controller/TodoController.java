@@ -27,7 +27,7 @@ public class TodoController {
     }
 
     @PostMapping("/saveTodo")
-    public String addTask(@RequestParam String name) {
+    public String addTask(@RequestParam("name") String name) {
         todoService.addTodo(name);
         return "redirect:/";
     }
@@ -36,5 +36,11 @@ public class TodoController {
     public String deleteTodo(@PathVariable int index) {
     todoService.removeTodo(index);
     return "redirect:/";
+    }
+    
+    @PostMapping("/editTodo")
+    public String editTodo(@RequestParam("index") int index, @RequestParam("name") String name) {
+        todoService.editTodo(index, name);
+        return "redirect:/";
     }
 }
