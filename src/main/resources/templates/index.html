@@ -20,8 +20,17 @@
     <div th:if="${list != null and not #lists.isEmpty(list)}">
         <h2>Your Todos:</h2>
         <ul>
-            <li th:each="item : ${list}" th:text="${item.name}"></li>
+            <li th:each="todo, todoStat : ${list}">
+                <span th:text="${todo.name}"></span>
+                <!-- Delete link with index parameter for identifying which todo to remove -->
+                <a th:href="@{/deleteTodo/{index}(index=${todoStat.index})}">Delete</a>
+            </li>
         </ul>
+    </div>
+    
+    <!-- Display message when list is empty -->
+    <div th:if="${list == null or #lists.isEmpty(list)}">
+        <p>No todos available. Add one to get started!</p>
     </div>
 
 </body>
