@@ -32,6 +32,9 @@ public class TodoController {
         return "redirect:/";
     }
 
-   
-
+    @GetMapping("/deleteTodo/{index}")
+    public String deleteTodo(@PathVariable int index) {
+    todoService.removeTodo(index);
+    return "redirect:/";
+    }
 }
