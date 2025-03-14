@@ -32,10 +32,19 @@
                         <div th:if="${list != null and not #lists.isEmpty(list)}" class="mt-4">
                             <h2 class="text-center">Your Todos</h2>
                             <ul class="list-group">
-                                <li th:each="item, iterStat : ${list}" th:id="'todo-' + ${iterStat.index}" class="list-group-item d-flex justify-content-between align-items-center">
+                                <li th:each="item, iterStat : ${list}" th:id="'todo-' + ${iterStat.index}"
+                                    class="list-group-item d-flex justify-content-between align-items-center">
                                     <span th:text="${item.name}"></span>
-                                    <!-- Edit Button -->
-                                    <button class="btn btn-warning btn-sm" th:onclick="'editTodo(' + ${iterStat.index} + ')'" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <div>
+                                        <!-- Edit Button -->
+                                        <button class="btn btn-warning btn-sm me-2"
+                                            th:onclick="'editTodo(' + ${iterStat.index} + ')'" data-bs-toggle="modal"
+                                            data-bs-target="#editModal">Edit</button>
+
+                                        <!-- Delete Button -->
+                                        <a th:href="@{/deleteTodo/{index}(index=${iterStat.index})}"
+                                            class="btn btn-danger btn-sm">Delete</a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -58,7 +67,8 @@
                         <input type="hidden" id="todoIndex" name="index" />
                         <div class="mb-3">
                             <label for="todoName" class="form-label">Todo Name</label>
-                            <input type="text" class="form-control" id="todoName" name="name" placeholder="Edit task" required />
+                            <input type="text" class="form-control" id="todoName" name="name" placeholder="Edit task"
+                                required />
                         </div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </form>
@@ -77,8 +87,6 @@
             document.getElementById('todoName').value = todoName;
             document.getElementById('todoIndex').value = index;
         }
-
-
     </script>
 
 </body>
