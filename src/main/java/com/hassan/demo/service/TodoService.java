@@ -24,4 +24,11 @@ public class TodoService {
         if (index >= 0 && index < todo.size())
             todo.remove(index);
     }
+    
+    public void editTodo(int index, String newName) {
+        if (index >= 0 && index < todo.size()) {
+            Todo todoItem = todo.get(index);
+            todoItem.setName(newName);
+        }
+    }
 }
